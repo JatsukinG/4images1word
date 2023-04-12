@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    /*------------------------------------------ Base ----------------------------------------------*/
+    body, html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: #333;
+    }
+
+    /*---------------------------------- Numbers main page ------------------------------------------*/
+    .numberBox {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        background: #1C1C1C;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .numberBox::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(0deg, transparent, transparent,
+        lawngreen, lawngreen, lawngreen);
+        transform-origin: bottom right;
+        animation: animate 6s linear infinite;
+    }
+
+    .numberBox::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(0deg, transparent, transparent, red, red, red);
+        transform-origin: bottom right;
+        animation: animate 6s linear infinite;
+        animation-delay: -3s;
+        z-index: 1;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .numberBox span {
+        position: absolute;
+        inset: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 5em;
+        font-weight: bold;
+        background: #222;
+        border-radius: 12px;
+        text-shadow: 0 0 10px lawngreen;
+        z-index: 2;
+    }
+
+    /*------------------------------------- Button start -------------------------------------------*/
+    .buttonStart {
+        padding: 16px 32px;
+        background: linear-gradient(#555353, #363535, #303030);
+        border: 2px solid black;
+        border-radius: 32px;
+        box-shadow: inset 0 5px 1px rgba(0, 0, 0, 0.35),
+        0 5px 5px rgba(0, 0, 0, 0.5),
+        0 15px 25px rgba(0, 0, 0, 0.35);
+        color: white;
+        transition: all ease-in .3s;
+        text-shadow: 0 0 1px lawngreen, 0 0 1em lawngreen, 0 0 0.2em yellow;
+    }
+
+    .buttonStart:hover {
+        transform: scale(1.05);
+    }
+
+    .buttonStart:active {
+        background: linear-gradient(#555353, #363535, #303030);
+        box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 0.35),
+        0 2px 3px rgba(0, 0, 0, 0.5),
+        0 4px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    /*-------------------------------------- Images container ----------------------------------------*/
+    .imagesContainer {
+        padding: 16px 32px;
+        background: linear-gradient(#555353, #363535, #303030);
+        border: 2px solid black;
+        border-radius: 32px;
+        box-shadow: inset 0 5px 1px rgba(0, 0, 0, 0.35),
+        0 5px 5px rgba(0, 0, 0, 0.5),
+        0 15px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    /*--------------------------------------- Button letter ------------------------------------------*/
+    .buttonLetter {
+        padding: 15px 20px;
+        background: linear-gradient(#555353, #363535, #303030);
+        border: 2px solid black;
+        border-radius: 10px;
+        box-shadow: inset 0 5px 1px rgba(0, 0, 0, 0.35),
+        0 5px 5px rgba(0, 0, 0, 0.5),
+        0 15px 25px rgba(0, 0, 0, 0.35);
+        color: white;
+        font-size: 1.2em;
+        text-shadow: 1px 1px 2px lawngreen, 0 0 1em lawngreen, 0 0 0.2em yellow;
+        transition: ease-in .2s;
+    }
+
+    .buttonLetter:hover {
+        transform: scale(1.05);
+    }
+
+    .buttonLetterSelected {
+        opacity: 0;
+        pointer-events: none;
+    }
+    /*-------------------------------------------Button word ---------------------------------------*/
+    .buttonWord {
+        width: 48px;
+        height: 48px;
+        background: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: ease-in .2s;
+    }
+
+    .buttonWord:hover {
+        transform: scale(1.05);
+    }
+
+    .buttonWordInvalid {
+        box-shadow: 0 0 15px red;
+        animation: animateInvalid 1s linear infinite;
+    }
+
+    @keyframes animateInvalid {
+        0% {
+            transform: translateX(0px);
+        }
+        10% {
+            transform: translateX(3px);
+        }
+        20% {
+            transform: translateX(-3px) ;
+        }
+        30% {
+            transform: translateX(0px);
+        }
+    }
+}
