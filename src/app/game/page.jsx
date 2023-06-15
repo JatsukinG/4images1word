@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Image from "next/image"
+import { FaArrowCircleLeft } from "react-icons/fa"
 
 const levels = [
   {
@@ -27,6 +28,11 @@ const levels = [
     word: ['P', 'E', 'R', 'R', 'O'],
     images: ['/images/PERRO/PERRO1.jpg', '/images/PERRO/PERRO2.jpg', '/images/PERRO/PERRO3.png', '/images/PERRO/PERRO4.jpg'],
     letters: ['P', 'R', 'G', 'T', 'E', 'S', 'A', 'L', 'R', 'G', 'O', 'Y', 'K', 'I']
+  },
+  {
+    word: ['P', 'I', 'N', 'G', 'A'],
+    images: ['/images/PINGA/PINGA1.jpeg', '/images/PINGA/PINGA2.png', '/images/PINGA/PINGA3.jpeg', '/images/PINGA/PINGA4.jpeg'],
+    letters: ['P', 'R', 'G', 'T', 'E', 'S', 'A', 'L', 'N', 'G', 'O', 'Y', 'K', 'I']
   },
 ]
 
@@ -59,6 +65,7 @@ const Game = () => {
 
   const onClickLetter = (letter, i) => {
     let newWord = [...word]
+    if (newWord.indexOf('*') === -1) return
     newWord[newWord.indexOf('*')] = letter
     setWord(newWord)
 
@@ -140,6 +147,19 @@ const Game = () => {
                 Siguiente Nivel
               </button>
             </div>
+        }
+        {
+            level > 0 && (
+                <button
+                    className="fixed bottom-4 left-4 flex items-center gap-2 bg-transparent text-white hover:text-green-300"
+                    onClick={() => {
+                      setIsWinner(false)
+                      setLevel(level - 1)
+                    }}>
+                  <FaArrowCircleLeft/>
+                  Nivel Anterior
+                </button>
+            )
         }
       </div>
   )
